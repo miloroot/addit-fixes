@@ -1,0 +1,75 @@
+
+<!--** THIS IS FOR THE SIGN UP FORM/MODAL. THE MARKUP IS ON SIGNUPPAGE.HTML -->
+<div class="modal-header">
+	<button type="button" class="close" ng-click="cancel()">&times;</button>
+  <h3 class="modal-title">{{title}}</h3>
+</div>
+<div class="modal-body">
+
+	<!-- Success message -->
+	<alert ng-if="signupSuccessMsg" type="success">{{signupSuccessMsg}}</alert>
+	<!-- Error message -->
+	<alert ng-if="signupErrorMsg" type="error">{{signupErrorMsg}}</alert>
+
+	<!-- Signup Form -->
+  <form name="signupForm" ng-hide="signupSuccessMsg" class="form-horizontal modal-form-md" ng-submit="signupForm.$valid && newUser.password == passwordConfirm && signupSubmit()">
+
+  	<!-- Username -->
+    <div class="form-group">
+			<label for="username" class="col-xs-2 col-sm-1 control-label"><i class="fa fa-user"></i></label>
+			<div class="col-xs-10 col-sm-11">
+				<input ng-model="newUser.username" type="username" class="form-control" name="username" id="username" placeholder="Your fantastic AddIt username." ng-minlength="3" ng-change="checkUsername(signupForm, newUser.username)" required>
+				<!-- Error message -->
+				<p ng-show="usernameExists" class="help-block alert alert-danger">Username already exists.</p> 
+				<p ng-show="signupForm.username.$error.required && submitted" class="help-block alert alert-danger">Username is required.</p>
+				<p ng-show="signupForm.username.$error.minlength && submitted" class="help-block alert alert-danger">Username is too short.</p>
+			</div>
+		</div>
+
+		<!-- Password -->
+		<div class="form-group">
+			<label for="password" class="col-xs-2 col-sm-1 control-label"><i class="fa fa-lg fa-lock"></i></label>
+			<div class="col-xs-10 col-sm-11">
+				<input ng-model="newUser.password" type="password" class="form-control" name="password" id="password" placeholder="Pick a safe password." ng-minlength="3" required>
+				<!-- Error message -->
+				<p ng-show="signupForm.password.$error.required && submitted" class="help-block alert alert-danger">Password is required.</p>
+				<p ng-show="signupForm.password.$error.minlength && submitted" class="help-block alert alert-danger">Password is too short.</p>
+			</div>
+		</div>
+		<!-- Password Confirm -->
+		<div class="form-group">
+			<label for="passwordConfirm" class="col-xs-2 col-sm-1 control-label"><i class="fa fa-lg fa-lock"></i></label>
+			<div class="col-xs-10 col-sm-11" ng-class="{true: 'has-error', false:''}[signupForm.email.$invalid && submitted]">
+				<input ng-model="passwordConfirm" type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" placeholder="Confirm your password." required>
+				<!-- Error message -->
+				<p ng-show="signupForm.passwordConfirm.$touched && newUser.password != passwordConfirm" class="help-block alert alert-danger">Passwords don't match!</p>
+			</div>
+		</div>
+
+		<!-- Email -->
+		<div class="form-group">
+			<label for="email" class="col-xs-2 col-sm-1 control-label"><i class="fa fa-envelope"></i></label>
+			<div class="col-xs-10 col-sm-11" >
+				<input ng-model="newUser.email" name="email" type="email" class="form-control" id="email" placeholder="Email.">
+				<!-- Error message -->
+				<p ng-show="signupForm.email.$invalid && submitted" class="help-block alert alert-danger">Please enter a valid email.</p>
+			</div>
+		</div>
+
+		<!-- Submit button -->
+    <div class="form-group">
+    	<label class="col-xs-2 col-sm-1 control-label"></label>
+      	<div class="col-xs-10 col-sm-11">
+        	<button type="submit" ng-click="submitted = signupForm.$invalid" class="btn btn-default">Join AddIt</button>
+      	</div>
+    </div>
+
+  </form>
+
+</div>
+<!--
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>
+-->

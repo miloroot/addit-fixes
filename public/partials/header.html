@@ -1,0 +1,79 @@
+<!--HEADER-->
+<nav class="navbar navbar-default">
+   <div class="container-fluid">
+      <div class="navbar-header">
+         <button type="button" class="navbar-toggle collapsed" ng-click="collapseNav()" data-target="#navbarCollapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+         </button>
+         <div class="logo">
+            <a class="navbar-brand" ng-href="/">
+               <img src="../assets/img/addit.png" class="img-responsive" alt="addit" width="140px" height="45px">
+            </a>
+         </div>
+      </div>
+
+      <div id="navbarCollapse" ng-class="{true:'collapse', false:''}[isCollapsed]" class="navbar-collapse">
+
+         <!-- search form -->
+         <form ng-if="user._id" namn="searchForm" class="navbar-form navbar-left search-form" ng-controller="searchController" ng-submit="searchSubmit()">
+            <div class="input-group search-input-group">
+
+               <input type="text" name="searchBar" id="search-bar" class="form-control" placeholder="Search addIT" ng-model="searchString" ng-minlength="1" required>
+
+               <span class="input-group-btn">
+                  <button type="submit" ng-disabled="searchForm.$invalid" class="btn btn-default" title="Search" aria-label="Search">
+                     <i class="fa fa-search" aria-hidden="true"></i>
+                  </button>
+               </span>
+
+            </div>
+            <!-- error shows when search-bar == '' -->
+            <div>
+               <p ng-show="SearchError" class="help-block alert alert-danger">Please enter the word/words you are searching for.</p>
+            </div>
+         </form>
+
+         <ul class="nav navbar-nav navbar-right">
+
+            <li ng-show="user._id" id="navbar-link">
+               <a ng-href="/userpage">
+                  <i class="link-icon fa fa-user" aria-hidden="true" data-toggle="tooltip" tooltip="{{user.username}}'s profile" tooltip-placement="left"></i>
+                  <span class="link-text" aria-hidden="true">{{user.username}}'s page</span>
+               </a>
+            </li>
+
+            <li ng-show="user._id" id="navbar-link">
+               <a ng-href="/userpage/add">
+                  <i class="link-icon fa fa-pencil-square-o" aria-hidden="true" data-toggle="tooltip" tooltip="Add a post" tooltip-placement="left"></i>
+                  <span class="link-text" aria-hidden="true">Add Post</span>
+               </a>
+            </li>
+
+            <li ng-show="user._id" id="navbar-link">
+               <a ng-click="logOut()">
+                  <i class="link-icon fa fa-sign-out" aria-hidden="true" data-toggle="tooltip" tooltip="Logout" tooltip-placement="left"></i>
+                  <span class="link-text" aria-hidden="true">Log Out</span>
+               </a>
+            </li>
+
+            <li ng-hide="user._id" id="navbar-link" ng-controller="loginController">
+               <a ng-click="open('sm')" aria-label="Log In">
+                  <i class="link-icon fa fa-sign-in" aria-hidden="true" data-toggle="tooltip" tooltip="Log in" tooltip-placement="left"></i>
+                  <span class="link-text" aria-hidden="true">Log In</span>
+               </a>
+            </li>
+            
+            <li ng-hide="user._id" id="navbar-link" ng-controller="signUpController">
+               <a ng-click="open('md')" aria-label="Sign Up">
+                  <i class="link-icon fa fa-user-plus" aria-hidden="true" data-toggle="tooltip" tooltip="Sign up" tooltip-placement="left"></i>
+                  <span class="link-text" aria-hidden="true">Sign Up</span>
+               </a>
+            </li>
+
+         </ul>
+      </div>
+   </div>
+</nav>

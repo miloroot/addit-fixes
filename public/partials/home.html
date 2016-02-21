@@ -1,0 +1,66 @@
+<div id="panelRow">
+  <div class="">
+  <!-- when-scrolled="loadMore()" -->
+  <!-- <grid  list="Posts" resize ng-style="computePositions()"> -->
+    <article ng-repeat="post in visiblePosts |  limitTo:quantity | orderBy: '-createdAt' track by $index">
+
+      <!-- post holder -->
+      <div class="panelHolder">
+        <div class="panelWell panel panel-default">
+
+          <!-- header -->
+          <div class="panel-heading">
+            <h3 class="panel-title">{{post.author.username}} added this</h3>
+          </div>
+
+          <!-- Images -->
+          <div ng-if="post.images.length > 0" class="row panel-img" ng-controller="galleryController as gallery">
+              <div class="col-xs-10 col-sm-10 col-md-10">
+                  <div class="postImage">
+                      <img class="img-responsive"
+                      ng-src="{{post.images[gallery.current]}}"
+                      image-resize image-percent="100"/>
+                  </div>
+
+              </div>
+              <div class="col-xs-2 col-sm-2 col-md-2">
+                  <div class="wrapper">
+                      <ul class="imageList">
+                          <li ng-repeat="imagePath in post.images">
+                              <img class="img-responsive img-sm" ng-src="{{imagePath}}" ng-click="gallery.setCurrent(post.images.indexOf(imagePath))">
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+
+          <!--Videos -->
+          <div ng-if="post.videos.length > 0" class="row" ng-repeat="videoPath in post.videos">
+              <div class="col-md-12">
+                  <video ng-click="video()" class="img-responsive floatLeft" controls ng-src="{{videoPath}}">Your browser does not support the <code>video</code> element.</video>
+              </div>
+          </div>
+
+          <!-- Text content -->
+          <div class="panel-body">
+              <p>{{post.content}}</p>
+          </div>
+
+          <!-- Hashtags -->
+          <ul ng-if="post.tags.length > 0" class="list-group">
+              <li class="list-group-item">
+                  <a ng-controller="searchController" ng-click="searchForPostFromTag(tag)" ng-repeat="tag in post.tags">{{tag}} </a>
+              </li>
+          </ul>
+
+          <!-- footer -->
+          <div class="panel-footer" ng-if="post.createdAt">Created at: {{post.createdAt | date:'yyyy-MM-dd HH:mm'}}</div>
+          </div>
+
+        </div>
+      <!-- </grid> -->
+    </article>
+  </div>
+</div>
+<div class="btnPrev" ng-if="isMobile" ng-click="changePage()"><i class="fa fa-arrow-left"></i></div>
+<div class="btnNext" ng-if="isMobile" ng-click="changePage(true)"><i class="fa fa-arrow-right"></i></div>

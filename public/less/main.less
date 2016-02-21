@@ -1,0 +1,600 @@
+@import url("../bootstrap_less/bootstrap.less");
+
+/*
+google fonts CSS:
+    font-family: 'Telex', sans-serif; <-- header and footer-font.
+    font-family: 'Oldenburg', cursive;
+    font-family: 'Kite One', sans-serif;
+*/
+
+// Variables for fonts with appropiate names.
+// Usage example: font-family: @titlefont;
+@headerfont: 'Telex', sans-serif;
+@footerfont: 'Telex', sans-serif;
+
+//Variables for color
+
+@mainColor: #fff;
+@footerColor: #f8f8f8;
+@navbarBgColor: #FFFFFF;
+
+// Variables for Log In and Sign In buttons
+@bgcolor: #C1E8F5;
+@hovercolor: #96DBF2;
+
+.navbar {
+  background-color: @navbarBgColor;
+}
+
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+* {
+	margin: 0;
+}
+
+html, body {
+	height: 100%;
+}
+
+.container {
+	min-height: 100%;
+	margin-bottom: 200px;
+}
+
+.container:after {
+	content: "";
+	display: block;
+}
+
+header {
+    background-color: @mainColor;
+    height: auto;
+    font-family: @headerfont;
+
+    .navbar-brand {
+      height: auto;
+    }
+}
+
+.fa-search {
+  color: #777;
+}
+
+.latestpost {
+    background-color: @mainColor;
+    border: 1px solid #ffffff;
+    height: 100px;
+}
+
+.footer, .container:after {
+	height: 120px;
+}
+
+.footer {
+	background-color: @footerColor;
+	font-family: @footerfont;
+}
+
+.leftsidefooter {
+	text-align: right;
+}
+
+.rightsidefooter {
+	text-align: left;
+	margin-top: 10px;
+	border-left: 2px solid gray;
+}
+
+.fa-heart {
+	color: red;
+}
+
+.fa-facebook-square {
+	color: #17649A;
+}
+
+.fa-twitter-square {
+	color: #40B3DF;
+}
+
+.fa-instagram {
+	color: #5C3544;
+}
+
+ul {
+	list-style-type:none;
+	-webkit-padding-start: 0px;
+
+  .dropdown-menu {
+    background-color: #fff;
+    font-family: 'Telex', sans-serif;
+    font-size: 12.5px;
+
+    > li > a:hover {
+      background-color: #fcfcfc;
+    }
+  }
+
+}
+
+.fa-tags {
+  color: #40B3DF;
+}
+
+.fa-pencil {
+	color: #40B3DF;
+}
+
+.fa-camera {
+	color: #40B3DF;
+}
+
+.fa-film {
+	color: #40B3DF;
+}
+
+// START LINE for search-bar style
+
+.search-form {
+  margin: 18px 15px 15px 15px;
+
+  .search-input-group {
+    width: 300px;
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .search-form {
+    margin: 0 -15px 0 -15px;
+
+    .search-input-group {
+      width: 100%;
+
+      .form-control, .input-group-btn > .btn {
+        height: 46px;
+        font-size: 18px;
+        padding: 10px 16px;
+        line-height: 1.3333333;
+        border-radius: 6px;
+      }
+      .form-control {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      .input-group-btn > .btn {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+  }
+}
+
+// END LINE for search-bar style
+
+// START LINE for addpost-modal
+.modal-header {
+  border-bottom: 0px none;
+}
+
+.modal-body {
+  margin-top: -10px;
+  background-color: #ffffff;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.addbtn-text:hover {
+  background-color: #c9f1ff;
+  color: orange;
+}
+
+.addbtn-image:hover {
+  background-color: #ffbb68;
+  color: lightgreen;
+}
+
+.addbtn-video:hover {
+  background-color: #aaffc8;
+  color: lightblue;
+}
+// END LINE for addpost-modal
+
+// START LINE for modals & modal forms
+@media sceeen and (min-width: 768px) {
+  .modal-sm {
+    width: 400px;
+  }
+  .modal-md {
+    width: 500px;
+  }
+  .modal-form-sm .form-group {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .modal-form-md .form-group {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .modal-form-lg .form-group {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .modal-dialog .form-group {
+    margin-left: 0;
+
+    label {
+      margin-right: -15px;
+    }
+  }
+}
+// END LINE for modals & modal forms
+
+// START LINE for navbar-toggle
+.navbar-toggle {
+  margin: 20px 15px 15px 15px;
+}
+// END LINE for navbar-toggle
+
+// START LINE for navbar links
+#navbar-link {
+  text-align: center;
+  margin: 18px 15px 15px 15px;
+
+  a {
+    padding: 5px;
+    font-size: 18px;
+
+    .link-text {
+      display: none;
+    }
+    .link-icon {
+      display: block;
+      font-size: 24px;
+      color: #777777;
+    }
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .navbar-nav {
+    margin-top: 0;
+    margin-bottom: 0;
+
+    #navbar-link {
+      margin: 0;
+      padding: 15px;
+      border-bottom: 1px solid #e7e7e7;
+
+      a {
+        .link-text {
+          display: block;
+        }
+        .link-icon {
+          display: none;
+        }
+      }
+    }
+  }
+}
+// END LINE for navbar links
+
+// START LINE for styles used in the sign up form
+.fa-user {
+	color: lightgreen;
+}
+
+.fa-lock {
+	color: lightblue;
+}
+
+.fa-envelope {
+	color: orange;
+}
+// END LINE for styles used in the sign up form
+
+// START LINE for tags
+.alert-tags {
+  margin: 0;
+  padding: 5px;
+  border: 0;
+  background-color: transparent;
+}
+// END LINE for tags
+
+// START LINE for styles used on userpage.html
+.floatLeft {
+    float: left;
+}
+
+video {
+  min-width: 100%;
+}
+
+.clear {
+    clear: both;
+}
+
+.panel {
+  .panel-heading {
+    background-image: none;
+    background-color: @mainColor;
+    color: #44494D;
+    margin: 0 0 0 0;
+    height: 37px;
+
+    .panel-title {
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .nav > li > a {
+      margin: -25px 0 0 0;
+      padding: 8px 12px 1px 12px;
+      color: #5fceef;
+    }
+
+    .nav > li > a:hover {
+      background-color: transparent;
+      color: #000;
+    }
+
+    .nav .open > a {
+
+      background-color: #fff;
+    }
+
+    .nav .open > a:hover {
+      background-color: #fff;
+
+    }
+    .navbar-right {
+      float: right !important;
+      margin-right: -15px;
+
+      .dropdown-menu {
+        left: auto;
+        right: 0;
+
+        li > a {
+          &:hover {
+            color: lightblue;
+
+            span {
+              color: lightblue;
+            }
+          }
+          span {
+            margin-right: 10px;
+            color: #000;
+          }
+        }  
+      }
+    }
+  }
+}
+
+.panel-img {
+
+  .postImage img {
+    width: 100%;
+  }
+
+  .wrapper {
+    .imageList {
+      list-style: none;
+      height: auto;
+      width: auto;
+      -moz-margin-left: -68px;
+      -webkit-margin-left: -68px;
+      @-moz-document url-prefix() { margin-left: -68px; };
+      margin-left: -28px;
+
+      
+
+      img {
+        width: 100%;
+        margin-bottom: 5px;
+        cursor: pointer;
+        display: inline-block;
+        border: 1px solid #fff;
+
+        &:hover {
+          box-shadow: 0px 1px 2px #444;
+          transition: all .1s ease-in-out;
+          border-color: #fff;
+        }
+
+        &:active {
+          opacity: .70;
+          box-shadow: 0px 1px 4px #666;
+        }
+      }
+
+      @media screen and (min-width: 0px) and (max-width: 767px) {
+        img {
+          border: 1px solid #fff;
+        }
+      }
+    }
+  }
+}
+
+.glyphicon-edit {
+  color: #40B3DF;
+  margin-left: 1px;
+  margin-right: 8px;
+}
+.glyphicon-trash {
+  color: #40B3DF;
+  margin-right: 8px;
+}
+
+.col-center-block {
+    float: none;
+    display: block;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .col-center-block {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+// STOP LINE for styles used on userpage.html
+
+// Start line for styles used on home.html
+
+.frontCarousel {
+  height: 200;
+  width: 200;
+  overflow: hidden;
+}
+
+#panelRow {
+  :before, :after {box-sizing:  border-box !important;}
+   column-width: 30em;
+  -moz-column-width: 30rem;
+  -webkit-column-width: 30rem;
+   column-gap:10px;
+  -moz-column-gap: 6px;
+  -webkit-column-gap:6px;
+
+}
+
+.panelHolder {
+  //:before, :after {box-sizing:  border-box !important;}
+  display: inline-block;
+  //padding: 2px;
+  width:  100%;
+
+}
+
+.panelWell {
+  //:before, :after {box-sizing:  border-box !important;}
+  position:relative;
+  display: block;
+
+}
+
+.carousel {
+  max-height: 100%;
+  max-height: 250px;
+  margin-bottom: 2px;
+  overflow: hidden;
+  height: auto;
+
+
+  .item img {
+    max-height: 100%;
+    max-height: 250px;
+
+    width: 100%;
+    height: auto;
+    z-index: 1;
+  }
+}
+.carousel-inner {
+
+
+}
+
+.carousel-control.left, .carousel-control.right {
+    background: none;
+    top: 20px;
+}
+
+// Stop line for styles used on home.html
+
+// START LINE for searchresult
+#result-panel-group {
+  margin-bottom: 10px;
+
+  .panel {
+    margin: 0px;
+
+    .panel-heading{
+      padding-top: 15px;
+      margin: 0 0 0 0;
+      height: 50px;
+
+      .panel-title {
+        float: left;
+        font-weight: bold;
+        margin-right: 15px;
+        margin-top: 3px;
+      }
+
+      i {
+        margin-top: 3px;
+      }
+
+      p {
+        float: left;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 75%;
+        margin: 0px;
+      }
+
+      &:hover {
+        background-color: lightblue;
+        cursor: pointer;
+
+        .nav > li > a {
+          background-color: lightblue;
+          //border-radius: 100%;
+          color: #000;
+        }
+      }
+    }
+
+    .collapse-panel {
+      border: 0;
+    }
+  }
+}
+
+.panel-body {
+  font-size: 16px;
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.panel-footer {
+  color: gray;
+  font-size: 10px;
+}
+
+.glyphicon-plus:hover {
+  color: lightgreen;
+}
+
+#search-result-title, #no-results {
+  text-align: center;
+}
+// END LINE for searchresult
+
+/*Mobile specials styling*/
+
+.btnPrev {
+  float: left;
+  margin: 35px 15px;
+  font-size: 35px;
+}
+
+.btnNext {
+  float: right;
+  margin: 35px 15px;
+  font-size: 35px;
+}
+
+

@@ -1,0 +1,69 @@
+
+<div class="row col-xs-12 col-sm-8 col-md-6 col-lg-6 col-center-block">
+
+	<h1 id="search-result-title">Search result</h1>
+
+	<div ng-if="searchResult" id="result-panel-group" class="panel-group" ng-repeat="post in searchResult | orderBy: '-createdAt' as srcRes">
+		<div class="panel panel-default">
+			<div class="panel-heading" ng-click="isCollapsed = !isCollapsed">
+
+				<!-- Panel title -->
+				<h3 class="panel-title">{{post.author.username}}</h3>
+
+				<p>{{post.content}}</p>
+
+				<i ng-if="!isCollapsed" class="fa fa-minus pull-right"></i>
+				<i ng-if="isCollapsed" class="fa fa-plus pull-right"></i>
+			</div>
+
+			<div collapse="isCollapsed" class="panel collapse-panel">
+
+				<!-- Images -->
+	            <div ng-if="post.images.length > 0" class="row panel-img" ng-controller="galleryController as gallery">
+	                <div class="col-xs-10 col-sm-10 col-md-10">
+	                    <div class="postImage">
+	                        <img class="img-responsive"
+	                        ng-src="{{post.images[gallery.current]}}"
+	                        image-resize image-percent="100"/>
+	                    </div>
+
+	                </div>
+	                <div class="col-xs-2 col-sm-2 col-md-2">
+	                    <div class="wrapper">
+	                        <ul class="imageList">
+	                            <li ng-repeat="imagePath in post.images">
+	                                <img class="img-responsive" ng-src="{{imagePath}}" ng-click="gallery.setCurrent(post.images.indexOf(imagePath))">
+	                            </li>
+	                        </ul>
+	                    </div>
+	                </div>
+	            </div>
+
+	            <!--Videos -->
+	            <div ng-if="post.videos.length > 0" class="row" ng-repeat="videoPath in post.videos">
+	                <div class="col-md-12">
+	                    <video class="img-responsive floatLeft" controls ng-src="{{videoPath}}">Your browser does not support the <code>video</code> element.</video>
+	                </div>
+	            </div>
+
+				<!-- Text content -->
+				<div class="panel-body">
+					<p>{{post.content}}</p>
+				</div>
+
+				<!-- Hashtags -->
+	            <ul ng-if="post.tags.length > 0" class="list-group">
+	                <li class="list-group-item">
+	                    <a ng-controller="searchController" ng-click="searchForPostFromTag(tag)" ng-repeat="tag in post.tags">{{tag}} </a>
+	                </li>
+	            </ul>
+
+				<!-- Panel footer -->
+				<div class="panel-footer" ng-if="post.createdAt">{{post.createdAt | date:'yyyy-MM-dd HH:mm'}}</div>
+			</div>
+		</div>
+	</div>
+	<h3 ng-if="!searchResult.length" id="no-results"> Sorry, no results found. </h3>
+</div>
+
+

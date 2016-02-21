@@ -1,0 +1,70 @@
+<div class="modal-header">
+  <button type="button" class="close" ng-click="cancel()">&times;</button>
+  <h3 class="modal-title">{{title}}</h3>
+</div>
+
+<div class="modal-body">
+
+  <form name="videoPostForm" ng-submit="videoPostSubmit()" class="form-horizontal modal-form-lg">
+
+    <!-- alert for success & error when submiting form -->
+    <div ng-show="successAlert">
+    <alert type="success" close="successAlert = ''">{{successAlert}}</alert>
+    </div>
+    <div ng-show="errorAlert">
+    <alert type="danger" close="errorAlert = ''">{{errorAlert}}</alert>
+    </div>
+
+    <div class="form-group">
+      <label for="videos" class="col-xs-2 col-sm-1 control-label"><i class="fa fa-film"></i></label>
+      <input type="file" class="col-xs-10 col-sm-11" id="videos" accept="video/*" ngf-select ngf-min-size='10' ngf-max-size='10485760' ng-model="videos" multiple required>
+      <p ng-show="videoPostForm.videos.$error.min-size" class="help-block">File is to small.</p>
+      <p ng-show="videoPostForm.videos.$error.max-size" class="help-block">File is to big.</p>
+      <p class="col-sm-6">Max filesize is 10 mb</p>
+    </div>
+
+    <div class="form-group">
+      <label for="content" class="col-xs-2 col-sm-1 control-label"><i class="fa fa-pencil"></i></label>
+      <div class="col-xs-10 col-sm-11">
+        <textarea id="content" class="form-control" ng-model="content" name="content" placeholder="Share your story and add a video below." required></textarea>
+      </div>
+    </div>
+
+    <div class="form-group">
+         <label for="tags" class="col-xs-2 col-sm-1 control-label"><i class="fa fa-tags"></i></label>
+         <div class="col-xs-10 col-sm-11">
+            <tags-input id="tags" 
+               name="tags" 
+               ng-model="tags" 
+               placeholder="Add a hashtag" 
+               min-length="1"
+               max-tags="30"
+               add-on-space="true" 
+               replace-spaces-with-dashes="false" 
+               allowed-tags-pattern="(^#([A-ZÅÄÖØa-zåäöø0-9]+)$)"
+               restrict-to-max-tags>
+            </tags-input>
+            <div ng-show="maxTags" class="alert alert-danger alert-tags" role="alert">
+               <span class="fa fa-exclamation-circle" aria-hidden="true"></span>
+               <span class="sr-only">Error:</span>
+               You have reached the limit of 30 hashtag
+            </div>
+         </div>
+      </div>
+
+    <div class="form-group">
+      <label class="col-xs-2 col-sm-1 control-label"></label>
+      <div class="col-xs-10 col-sm-11">
+        <button type="submit" ng-disabled="videoPostForm.$invalid" class="btn btn-default">Add It!</button>
+      </div>
+    </div>
+  </form>
+
+
+</div>
+
+
+
+
+
+

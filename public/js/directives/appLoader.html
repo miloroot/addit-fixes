@@ -1,0 +1,6 @@
+<!-- the div below will not be included until Login has finished getting data once -->
+<div ng-if="loginProcessed">
+    <header ng-include="'partials/header.html'" ng-controller="menuController"></header>
+    <div ng-view class="container"></div>
+    <footer class="footer" ng-include="'partials/footer.html'"></footer>
+</div>
