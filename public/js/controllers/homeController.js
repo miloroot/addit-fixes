@@ -30,7 +30,7 @@ app.controller("homeController", ["$http", "$scope", "login", "Post", "User", "I
     var newPostsIndex = forward ? (postsIndex + $scope.quantity) : (postsIndex - $scope.quantity);
 
     if (newPostsIndex < 0 || newPostsIndex >= $scope.posts.length-1) { return; }
-    postsIndex = newPostsIndex
+    postsIndex = newPostsIndex;
     $scope.visiblePosts = $scope.posts.slice(postsIndex);
   };
 

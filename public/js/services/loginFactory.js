@@ -18,14 +18,14 @@ app.factory("login", ["$http", "$rootScope", "$location", "User", function($http
 
 				$rootScope.$broadcast("login");
 
-				callback && callback(loginObj.user);
+				/*callback &&*/ callback(loginObj.user);
 			});
 		},
 		check: function(callback) {
 			$http.get('api/login').success(function(data) {
 				updateObj(data ? data : {}, loginObj.user);
 
-				callback && callback(loginObj.user);
+				/*callback &&*/ callback(loginObj.user);
 			});
 		},
 		logout: function(callback) {
@@ -34,7 +34,7 @@ app.factory("login", ["$http", "$rootScope", "$location", "User", function($http
 
 				$rootScope.$broadcast("logout");
 
-				callback && callback(loginObj.user);
+				/*callback &&*/ callback(loginObj.user);
 			});
 		},
 		getUser: function(callback) {
